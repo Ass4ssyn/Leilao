@@ -21,6 +21,7 @@ public class conectaDAO {
         Connection conn = null;
         
         try {
+            System.out.print("Olá");
             // Corrigida a URL de conexão
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/leilao?user=root&password=Ass4ssyn#");
         } catch (SQLException erro){
