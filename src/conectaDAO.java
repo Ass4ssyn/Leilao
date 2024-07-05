@@ -17,17 +17,19 @@ import javax.swing.JOptionPane;
  */
 public class conectaDAO {
     
-    public Connection connectDB(){
-        Connection conn = null;
-        
+    public Connection getConexao() {
         try {
-            System.out.print("Olá");
-            // Corrigida a URL de conexão
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/leilao?user=root&password=Ass4ssyn#");
-        } catch (SQLException erro){
-            JOptionPane.showMessageDialog(null, "Erro ConectaDAO: " + erro.getMessage());
+            Connection conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost/projetointegrador",
+                "root",
+                "Ass4ssyn#"
+            );
+            return conn;
+        } catch (SQLException e) {
+            System.out.println("Erro ao conectar: " + e.getMessage());
+            return null;        
         }
-        return conn;
+        
     }
     
 }
