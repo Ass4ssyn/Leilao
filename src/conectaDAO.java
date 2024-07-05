@@ -20,7 +20,7 @@ public class conectaDAO {
     public Connection getConexao() {
         try {
             Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost/projetointegrador",
+                "jdbc:mysql://localhost/leilao",
                 "root",
                 "Ass4ssyn#"
             );
