@@ -20,15 +20,14 @@ public class ProdutosDAO {
 
     private conectaDAO conexao;
     private Connection conn;
-    PreparedStatement prep;
-    ResultSet resultset;
-    ArrayList<ProdutosDTO> listagem = new ArrayList<>();
+       ArrayList<ProdutosDTO> listagem = new ArrayList<>();
 
     public boolean conectar() {
 
         this.conexao = new conectaDAO();
         this.conn = this.conexao.getConexao();
         if (this.conn == null) {
+            System.out.println("Deu problema");
             return false;
         } else {
             return true;
@@ -36,13 +35,17 @@ public class ProdutosDAO {
     }
 
     public int cadastrarProduto(ProdutosDTO produto) {
-
+        if (conn == null) {
+            if (!conectar()) {
+                return -1; // Código de erro indicando falha na conexão
+            }
+        }
         //conn = new conectaDAO().connectDB();
         int status;
-        try {
+        try {   
 
             // Preparar a declaração SQL
-            String insertQuery = "INSERT INTO produto(nome, valor, status) VALUES (?,?,?)";
+            String insertQuery = "INSERT INTO produtos(nome, valor, status) VALUES (?,?,?)";
             PreparedStatement st = conn.prepareStatement(insertQuery);
 
             // Definir os parâmetros da instrução de inserção
@@ -67,12 +70,16 @@ public class ProdutosDAO {
     }
 
     public ArrayList<ProdutosDTO> listarProdutos(String termoBusca) {
-
+        if (conn == null) {
+            if (!conectar()) {
+                return null; // Indica falha na conexão
+            }
+        }
         try {
 
             List<ProdutosDTO> lista = new ArrayList<>();
             String sqlFiltro = "SELECT nome, valor, status \n"
-                    + "FROM Produto\n";
+                    + "FROM Produtos\n";
             if (!termoBusca.isEmpty()) {
                 sqlFiltro = sqlFiltro + " WHERE nome like ?";
 

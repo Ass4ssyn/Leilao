@@ -20,7 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `uc11`
 --
-
+drop database leilao
+use leilao;
+/*select * from produtos;*/
 -- --------------------------------------------------------
 
 --
@@ -28,7 +30,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `produtos` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL auto_increment,
   `nome` text DEFAULT NULL,
   `valor` int(11) DEFAULT NULL,
   `status` text DEFAULT NULL
@@ -38,11 +40,11 @@ CREATE TABLE `produtos` (
 -- Extraindo dados da tabela `produtos`
 --
 
-INSERT INTO `produtos` (`id`, `nome`, `valor`, `status`) VALUES
-(2, 'PS4', 1500, 'Vendido'),
-(3, 'Xbox 360', 800, 'Vendido'),
-(4, 'Iphone 12', 4800, 'Vendido'),
-(5, 'PS2', 400, 'A Venda');
+INSERT INTO `produtos` (`nome`, `valor`, `status`) VALUES
+('PS4', 1500, 'Vendido'),
+('Xbox 360', 800, 'Vendido'),
+('Iphone 12', 4800, 'Vendido'),
+('PS2', 400, 'A Venda');
 
 --
 -- Índices para tabelas despejadas

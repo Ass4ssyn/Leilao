@@ -2,7 +2,7 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 
 
@@ -16,11 +16,10 @@ import javax.swing.JOptionPane;
  * @author Adm
  */
 public class conectaDAO {
-    
     public Connection getConexao() {
         try {
             Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost/leilao",
+                "jdbc:mysql://localhost/leilao?useSSL=false",
                 "root",
                 "Ass4ssyn#"
             );
