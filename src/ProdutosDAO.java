@@ -78,7 +78,7 @@ public class ProdutosDAO {
         try {
 
             List<ProdutosDTO> lista = new ArrayList<>();
-            String sqlFiltro = "SELECT nome, valor, status \n"
+            String sqlFiltro = "SELECT id, nome, valor, status \n"
                     + "FROM Produtos\n";
             if (!termoBusca.isEmpty()) {
                 sqlFiltro = sqlFiltro + " WHERE nome like ?";
@@ -93,6 +93,7 @@ public class ProdutosDAO {
             // por ser uma lista usamos o while
             while (rs.next()) {
                 ProdutosDTO prodEncontrado = new ProdutosDTO();
+                prodEncontrado.setId(rs.getInt("id"));
                 prodEncontrado.setNome(rs.getString("nome"));
                 prodEncontrado.setValor(rs.getInt("valor"));
                 prodEncontrado.setStatus(rs.getString("status"));
