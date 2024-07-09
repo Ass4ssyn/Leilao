@@ -40,7 +40,6 @@ public class ProdutosDAO {
                 return -1; // Código de erro indicando falha na conexão
             }
         }
-        //conn = new conectaDAO().connectDB();
         int status;
         try {   
 
@@ -57,11 +56,7 @@ public class ProdutosDAO {
             // Executar a instrução de inserção e obter o status
             status = st.executeUpdate();
             return status;
-            /*} else {
-            // Se não houver nenhum resultado para a descrição fornecida
-            System.out.println("Material não encontrado para a descrição fornecida");
-            return -1; // ou qualquer valor de status que indique que não foi possível encontrar o material
-        }*/
+            
         } catch (SQLException ex) {
             System.out.println("Erro ao conectar para realizar o cadastro " + ex.getMessage());
             return ex.getErrorCode();
