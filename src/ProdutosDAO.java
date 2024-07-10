@@ -63,6 +63,33 @@ public class ProdutosDAO {
         }
 
     }
+    
+    public int venderProduto(ProdutosDTO produto) {
+        if (conn == null) {
+            if (!conectar()) {
+                return -1; // Código de erro indicando falha na conexão
+            }
+        }
+        int status;
+        try {
+
+            // Instrução SQL para atualizar na tabela entrega com o material_id correspondente
+            String updateQuery = "UPDATE produtos SET status = 'Vendido' "
+                    + "WHERE id = ?";
+            PreparedStatement st = conn.prepareStatement(updateQuery);
+
+            // Definir os parâmetros da instrução de atualização
+            st.setInt(1, produto.getId());
+
+            // Executar a declaração de atualização e obter o status
+            status = st.executeUpdate();
+            return status;
+
+        } catch (SQLException ex) {
+            System.out.println("Erro ao conectar para alterar " + ex.getMessage());
+            return ex.getErrorCode();
+        }
+    }
 
     public ArrayList<ProdutosDTO> listarProdutos(String termoBusca) {
         if (conn == null) {
