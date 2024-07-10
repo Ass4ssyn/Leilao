@@ -20,9 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `uc11`
 --
-drop database leilao
+create database leilao;
 use leilao;
-/*select * from produtos;*/
+
 -- --------------------------------------------------------
 
 --
@@ -33,7 +33,8 @@ CREATE TABLE `produtos` (
   `id` bigint(20) UNSIGNED NOT NULL auto_increment,
   `nome` text DEFAULT NULL,
   `valor` int(11) DEFAULT NULL,
-  `status` text DEFAULT NULL
+  `status` text DEFAULT NULL,
+  primary key(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -53,7 +54,7 @@ INSERT INTO `produtos` (`nome`, `valor`, `status`) VALUES
 --
 -- Índices para tabela `produtos`
 --
-ALTER TABLE `produtos`
+/*ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`);
 
 --
