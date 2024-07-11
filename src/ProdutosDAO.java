@@ -103,7 +103,7 @@ public class ProdutosDAO {
             String sqlFiltro = "SELECT id, nome, valor, status \n"
                     + "FROM Produtos\n";
             if (!termoBusca.isEmpty()) {
-                sqlFiltro = sqlFiltro + " WHERE nome like ?";
+                sqlFiltro = sqlFiltro + " WHERE status like ?";
 
             }
             PreparedStatement st = conn.prepareStatement(sqlFiltro);

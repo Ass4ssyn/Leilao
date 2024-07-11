@@ -18,6 +18,7 @@ public class vendidosVIEW extends javax.swing.JFrame {
      */
     public vendidosVIEW() {
         initComponents();
+        listarProdutos();
     }
 
     /**
@@ -111,7 +112,7 @@ public class vendidosVIEW extends javax.swing.JFrame {
                     listagem.get(i).getId(),
                     listagem.get(i).getNome(),
                     listagem.get(i).getValor(),
-                    //listagem.get(i).getStatus()
+                    listagem.get(i).getStatus()
                 });
             }
         } catch (Exception e) {
