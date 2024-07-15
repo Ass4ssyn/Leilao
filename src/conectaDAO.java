@@ -19,7 +19,7 @@ public class conectaDAO {
     public Connection getConexao() {
         try {
             Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost/leilao?useSSL=false",
+                "jdbc:mysql://localhost:3306/leilao?allowPublicKeyRetrieval=true&useSSL=false",
                 "root",
                 "Ass4ssyn#"
             );
